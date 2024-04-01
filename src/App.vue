@@ -1,14 +1,23 @@
 <template>
-<router-view/>
+  <div>
+    <!-- <log-in v-if="!$route.meta.hideLogIn"/>
+    <sign-up v-if="!$route.meta.hideSignUp"/> -->
+    <div class="main-content">
+      <router-view />
+    </div>
+  </div>
 </template>
 
 <script>
-import LogIn from './pages/LogIn.vue'
+// import LogIn from '../src/pages/LogIn.vue';
+// import SignUp from '../src/pages/SignUp.vue'
 export default {
-name:'App'
-}
+//   components: {
+//    LogIn,
+//     SignUp,
+//   }
+};
 </script>
-
 <style>
-
+/* Your global styles */
 </style>

@@ -9,6 +9,8 @@ import VueSweetalert2 from 'vue-sweetalert2';
 import 'sweetalert2/dist/sweetalert2.min.css';
 import Vue3Toasity from 'vue3-toastify';
 import 'vue3-toastify/dist/index.css';
+import '@fortawesome/fontawesome-free/css/all.css'
+import '@mdi/font/css/materialdesignicons.min.css';
 
 const vuetify = createVuetify({
   components,

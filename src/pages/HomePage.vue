@@ -1,63 +1,45 @@
 <template>
-  <v-card>
-    <v-layout>
-      <!-- <v-system-bar color="deep-purple darken-3"></v-system-bar> -->
-
-      <v-app-bar
-        color="primary"
-        prominent
-      >
-        <v-app-bar-nav-icon variant="text" @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
-
-        <v-toolbar-title>My files</v-toolbar-title>
-
-        <v-spacer></v-spacer>
-
-        <v-btn icon="mdi-magnify" variant="text"></v-btn>
-
-        <v-btn icon="mdi-filter" variant="text"></v-btn>
-
-        <v-btn icon="mdi-dots-vertical" variant="text"></v-btn>
-      </v-app-bar>
-
-      <v-navigation-drawer
-        v-model="drawer"
-        location="top"
-        temporary
-      >
-        <v-list
-          :items="items"
-        ></v-list>
-      </v-navigation-drawer>
-
-      <v-main style="height: 500px;">
-        <v-card-text>
-          The navigation drawer will appear from the bottom on smaller size screens.
-        </v-card-text>
-      </v-main>
-    </v-layout>
-  </v-card>
+<div class="top_div">
+<side-bar/>
+<navigation-bar/>
+<div class="main_div">
+  <router-view>
+    <home-pages/>
+  </router-view>
+</div>
+</div>
 </template>
-
 <script>
+import HomePages from '../components/HomePages.vue';
+import  NavigationBar from '../components/NavigationBar.vue'
+import SideBar from '../components/SideBar.vue';
 export default {
   name: "HomePage",
+  components:{
+    NavigationBar,
+    SideBar,
+    HomePages,
+  },
   data() {
     return {
-      items: [],
-      drawer: false, // Define the drawer property in data
+      drawer: true,
+      rail: true,
     };
   },
 };
 </script>
 
 <style scoped>
-/* .main_div{
+.drawer{
+   background: rgb(96, 144, 181);
+   color: #fff;
+}
+.top_div{
+  background: #F4F3EF;
+  height: 100vh;
   width: 100vw;
-  height:100vh;
-  background: #B2CDE2;
 }
 h1{
   text-align: center;
-} */
+}
 </style>

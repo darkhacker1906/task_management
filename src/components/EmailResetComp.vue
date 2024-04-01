@@ -78,6 +78,9 @@ export default {
           showConfirmButton: false,
           timer: 1500,
         });
+        setTimeout(()=>{
+        this.$router.push("/");
+        },1500)
       } catch (e) {
         console.warn(e);
       } finally {
