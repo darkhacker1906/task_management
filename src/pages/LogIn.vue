@@ -101,12 +101,12 @@ export default {
       try {
         this.loading = true;
         await signInWithEmailAndPassword(auth, values.email, values.password);
-        toast.success("Logging in", { duration: 1000 });
+        toast.success("Logging in", { autoClose: 1500 });
         setTimeout(() => {
           this.$router.push("/home");
-        }, 1000);
+        }, 2000);
       } catch (e) {
-        toast.error("Incorrect email or password",{duration:100});
+        toast.error("Incorrect email or password",{autoClose:1500});
         console.warn(e);
       } finally {
         this.loading = false;
@@ -124,7 +124,11 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: rgb(178 205 226);
+  background-image:url('../assets/login.jpeg') ;
+  background-position: center;
+  object-fit: cover;
+  /* filter: blur(2px); */
+  /* background: rgb(178 205 226); */
 }
 h1 {
   text-align: center;
@@ -137,6 +141,11 @@ h1 {
   padding: 20px;
   border-radius: 10px;
   background: #fff;
+  opacity: .9;
+
+}
+.main_div > .flex_div {
+      filter: blur(.1px);
 }
 .input {
   width: 100%;

@@ -1,10 +1,13 @@
 <template>
-  <router-view />
+  <h1>This is the task page</h1>
 </template>
 
 <script>
-export default {};
+export default {
+
+}
 </script>
 
 <style>
+
 </style>
