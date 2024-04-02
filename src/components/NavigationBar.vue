@@ -33,7 +33,7 @@ export default {
 .main_div {
   /* background: rgb(243, 243, 243);*/
    background: #F4F3EF;
-  /* width: 100%; */
+  width: 100%;
   height: 100%;
   color: #fff;
 }
@@ -56,5 +56,4 @@ export default {
   font-size: 19px;
   color:black;
 }
-
 </style>

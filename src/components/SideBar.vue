@@ -1,99 +1,73 @@
 <template>
-  <v-card>
+  <div>
     <v-layout>
-      <v-navigation-drawer
-        v-model="drawer"
-        :rail="rail"
-        permanent
-        @click="rail = false"
-        class="drawer"
-      >
-        <v-list-item
-          prepend-avatar="https://randomuser.me/api/portraits/men/85.jpg"
-          title="John Leider"
-          nav
-        >
-          <template v-slot:append>
-            <v-btn
-              icon="mdi-chevron-left"
-              variant="text"
-              @click.stop="rail = !rail"
-            >
-              <i class="fa-solid fa-angle-right"></i>
-            </v-btn>
-          </template>
-        </v-list-item>
+      <v-app-bar color="primary" prominent>
+        <v-app-bar-nav-icon
+          variant="text"
+          @click.stop="drawer = !drawer"
+        ></v-app-bar-nav-icon>
 
-        <v-divider></v-divider>
+        <v-toolbar-title>My files</v-toolbar-title>
 
-        <v-list density="compact" nav>
+        <v-spacer></v-spacer>
+        <v-btn icon="mdi-magnify" variant="text"></v-btn>
+
+        <v-btn icon="mdi-filter" variant="text"></v-btn>
+
+        <v-btn icon="mdi-dots-vertical" variant="text"></v-btn>
+      </v-app-bar>
+
+      <v-navigation-drawer v-model="drawer" location="left" temporary>
+        <v-list>
           <v-list-item
-            prepend-icon="mdi-home-city"
-            title="Home"
-            value="home"
-          ></v-list-item>
-          <v-list-item
-            prepend-icon="mdi-account"
-            title="My Account"
-            value="account"
-          ></v-list-item>
-          <v-list-item
-            prepend-icon="mdi-account-group-outline"
-            title="Users"
-            value="users"
-          ></v-list-item>
-          <v-list-item
-            prepend-icon="mdi-file-tree"
-            class="home"
-            title="Tasks"
-            value="tasks"
-            @click="handleTask"
+            v-for="(item, index) in items"
+            :key="index"
+            @click="navigateTo(item.path)"
           >
+            <v-list-item-title>{{ item.title }}</v-list-item-title>
           </v-list-item>
-           <v-list-item
-            prepend-icon="mdi-logout"
-            title="Logout"
-            value="users"
-            @click="handleLogout"
-          ></v-list-item>
         </v-list>
       </v-navigation-drawer>
-      <!-- <v-main>
-       
-       </v-main> -->
+
+      <v-main>
+        <router-view></router-view>
+      </v-main>
     </v-layout>
-  </v-card>
+  </div>
 </template>
 
 <script>
-import { signOut, auth } from "../firebase";
 export default {
-  data() {
-    return {
-      drawer: true,
-      rail: true,
-    };
-  },
-  methods:{
-    handleTask(){
-      console.log("Hello");
+  data: () => ({
+    drawer: false,
+    group: null,
+    items: [
+      {
+        title: 'Dashboard',
+        path: '/home',
+      },
+      {
+        title: 'About',
+        path: '/about'
+      },
+      {
+        title: 'Contact',
+        path: '/contact'
+      },
+      {
+        title: 'Contact',
+        path: '/contact'
+      },
+    ],
+  }),
+
+  methods: {
+    navigateTo(path) {
+      this.drawer = false; 
+      this.$router.push(path);
     },
-      async handleLogout() {
-      try {
-        console.log("Hello this is ");
-        await signOut(auth);
-        this.$router.push("/")
-      } catch (e) {
-        console.warn(e);
-      }
-    }
-  }
+  },
 };
 </script>
 
-<style scoped>
-.drawer{
-  background: #000;
-  color:#fff;
-}
-</style>
+<style scoped></style>
